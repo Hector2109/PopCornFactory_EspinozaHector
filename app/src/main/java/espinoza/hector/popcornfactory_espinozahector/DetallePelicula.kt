@@ -1,6 +1,8 @@
 package espinoza.hector.popcornfactory_espinozahector
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -13,16 +15,42 @@ class DetallePelicula : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detalle_pelicula)
 
-        val bundle = intent.extras
+        var imagen: ImageView = findViewById(R.id.movie_header)
+        var nombre: TextView = findViewById(R.id.movie_title_detail) as TextView
+        var descripcion: TextView = findViewById(R.id.movie_summary) as TextView
+        var seatsLeft: TextView = findViewById(R.id.seatsLeft) as TextView
+        var buyTickets: Button = findViewById(R.id.buy_tickets) as Button
 
-        val iv_pelicula_imagen: ImageView = findViewById(R.id.iv_pelicula_images)
-        var tv_nombre_pelicula: TextView = findViewById(R.id.tv_nombre_pelicula)
-        var tv_pelicula_desc: TextView = findViewById(R.id.tv_pelicula_desc)
+        var bundle = intent.extras
+        var ns = 20
+        var id = -1
+        var title = ""
 
-        if (bundle!=null){
-            iv_pelicula_imagen.setImageResource(bundle.getInt("header"))
-            tv_nombre_pelicula.setText(bundle.getString("nombre"))
-            tv_pelicula_desc.setText(bundle.getString("sinopsis"))
+        if(bundle != null ){
+
+
+            title = bundle.getString("titulo")!!
+
+            imagen.setImageResource(bundle.getInt("header"))
+            nombre.setText(bundle.getString("nombre"))
+            descripcion.setText(bundle.getString("sipnosis"))
+            seatsLeft.setText("$ns seats available")
+            id = bundle.getInt("pos")
+
+        }
+
+        if (ns == 0){
+            buyTickets.isEnabled = false
+        } else {
+            buyTickets.isEnabled = true
+            buyTickets.setOnClickListener {
+                val intent: Intent = Intent(this, SeatSelection::class.java)
+
+                intent.putExtra("id", id)
+                intent.putExtra("name", title)
+
+                this.startActivity(intent)
+            }
         }
 
 

@@ -6,39 +6,67 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetallePelicula">
+    tools:context=".DetallePelicula"
+    android:background="@color/black_background">
+
+    <ImageView
+        android:id="@+id/movie_header"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:scaleType="centerCrop"/>
 
     <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/movie_title_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textColor="@color/yellow"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/yellow"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="40dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/movie_summary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_marginTop="15dp"
+        android:paddingHorizontal="20dp"
+        android:textColor="@color/white"
+        android:textSize="14sp"/>
 
-        <ImageView
-            android:id="@+id/iv_pelicula_images"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:src="@drawable/bones"/>
+    <Button
+        android:id="@+id/buy_tickets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/black"
+        android:background="@drawable/round_button"
+        android:paddingHorizontal="@dimen/padding_button"
+        android:text="Buy my ticket!"/>
 
-        <TextView
-            android:id="@+id/tv_nombre_pelicula"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="BONES"
-            android:textSize="20sp"
-            android:gravity="center"/>
-        
-        <TextView
-            android:id="@+id/tv_pelicula_desc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Dr. Temperance Brennan is a brilliant, but lonely, anthropologist whom is approached by an ambitious FBI agent, named Seely Booth, to help the bureau solve a series of unsolved crimes by identifying the long-dead bodies of missing persons by their bone structure. But both Agent Booth and Dr. Brennan and her team come up again a variety of interference from red tape, corruption, and local noncooperation."
-            android:textSize="20sp"/>
-
-        
+    <TextView
+        android:id="@+id/seatsLeft"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/grisClaro"
+        android:textStyle="italic"
+        android:textAlignment="center"
+        android:layout_marginTop="7dp"/>
 
 
-    </LinearLayout>
+
 
 
 </LinearLayout>
